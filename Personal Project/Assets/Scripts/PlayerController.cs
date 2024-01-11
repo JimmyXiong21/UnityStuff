@@ -7,8 +7,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]public float speed = 10;
     
     public Rigidbody rb;
-
-
+    public float horizontal;
+    public float vertical;
 
 
     // Start is called before the first frame update
@@ -21,11 +21,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            rb.AddRelativeForce(Vector3.forward * speed, ForceMode.Force);
-
-        }
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
+        
+        
+        rb.AddRelativeForce(Vector3.right * horizontal * speed, ForceMode.Force);
+        rb.transform.Rotate(Vector3.forward * vertical * speed);
+        
 
 
 
