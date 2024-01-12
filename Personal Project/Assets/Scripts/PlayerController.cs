@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     public float horizontal;
     public float vertical;
-
+    [SerializeField] public float turnSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -23,13 +23,13 @@ public class PlayerController : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
-        
-        
-        rb.AddRelativeForce(Vector3.right * horizontal * speed, ForceMode.Force);
-        rb.transform.Rotate(Vector3.forward * vertical * speed);
-        
 
 
+        rb.transform.Rotate(Vector3.up * horizontal * turnSpeed);
+        rb.AddRelativeForce(Vector3.forward * vertical * speed, ForceMode.Force);
+
+
+        
 
 
     }
